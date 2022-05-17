@@ -1,0 +1,31 @@
+/* O primeiro programa imprime os valores armazenados no vetor */
+# inclui  < stdio.h >
+# inclui  < stdlib.h >
+
+int  principal ()
+{
+    int vet[] = { 4 , 9 , 13 };
+    int ;
+    for (i= 0 ; i < 3 ; i++){
+        printf ( " %d  " ,*(vet+i));
+    }
+
+    retorna  0 ;
+}
+
+/* O segundo programa imprime os valores do vetor das memórias alocadas no computador. */
+
+# inclui  < stdio.h >
+# inclui  < stdlib.h >
+
+int  principal ()
+{
+    int vet[] = { 4 , 9 , 13 };
+    int i;
+
+    for (i= 0 ; i < 3 ; i++){
+        printf ( " %X  " ,vet+i);
+    }
+
+    retorna  0 ;
+}
