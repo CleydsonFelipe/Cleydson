@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* A maioria das respostas batem com a teoria, o tipo de memória diferente na teoria apresentada 2 bytes, porém, na execução apresentou 4 bytes de ocupação na memória,
+Apesar disso, podemos analisar que é independente dessa forma, segue-se a mesma lógica de armamento e operação para os tipos utilizados para testar em questão. */
+
+
+int  main (){
+
+    printf ( "TIPO INT\n " );
+
+    int x[ 4 ];
+
+    printf ( " %d \n " , x + 1 );
+    printf ( " %d \n " , x + 2 );
+    printf ( " %d \n " , x + 3 );
+
+
+    printf ( "TIPO CHAR\n " );
+
+    char y[ 4 ];
+
+    printf ( " %d \n " , y + 1 );
+    printf ( " %d \n " , y + 2 );
+    printf ( " %d \n " , y + 3 );
+
+
+    printf ( "TIPO FLOAT\n " );
+
+    flutuar a[ 4 ];
+
+    printf ( " %d \n " , a + 1 );
+    printf ( " %d \n " , a + 2 );
+    printf ( " %d \n " , a + 3 );
+
+
+    printf ( "TIPO CHAR\n " );
+
+    duplo b[ 4 ];
+
+    printf ( " %d \n " , b + 1 );
+    printf ( " %d \n " , b + 2 );
+    printf ( " %d \n " , b + 3 );
+
+
+    retorna  0 ;
+
+
+}
