@@ -1,0 +1,36 @@
+/*
+Na programação os ponteiros para funções são utilizados quando se deseja
+passar uma função como argumento para outra função, desse modo é possivel
+criar funções mais genericas pois dependendo da função que é passada como parâmetro,
+a função principal teria um funcionamento totalmente diferente, um exemplo de
+aplicação como foi passado na sala de aula, é para metodos de integração que
+depende da função passada como argumento o metodo de descobrir a area de um
+gráfico pode ser diferente. Ponteiros para funções possibilitam a criação de
+outras funções mais genericas, pelo fato de poderem assumirem outras funções
+como parâmetros.
+*/
+
+/* O exemplo abaixo é um programa implementado para fazer uma troca de variáveis ​​pelo endereço de memória */
+
+# include < stdio.h >
+
+void  troca ( int *a, int *b){
+ int aux= 0 ;
+
+aux=*a;
+*a=*b;
+*b=aux;
+
+}
+
+int  main (){
+
+   int a= 2 ,b= 3 ;
+
+   troca (&a,&b);
+
+   printf ( " a = %d eb = %d " ,a,b);
+
+    return  0 ;
+
+}
