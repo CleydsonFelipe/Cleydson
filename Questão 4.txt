@@ -1,0 +1,120 @@
+#include <stdio.h>
+
+int main() {
+    int valor;
+    int *p1;
+    float temp;
+    float *p2;
+    char aux;
+    char *nome = "Ponteiros";
+    char *p3;
+    int idade;
+    int vetor[3];
+    int *p4;
+    int *p5;
+
+    /* (a) */
+    valor = 10;
+    p1 = &valor;
+    *p1 = 20;
+    printf("%d \n", valor);
+    /*
+        Resposta esperada (20), já que no comando *p1 = 20 o valor da variavel valor
+    recebeu o numero 20.
+    */
+
+    /* (b) */
+    temp = 26.5;
+    p2 = &temp;
+    *p2 = 29.0;
+    printf("%.1f \n", temp);
+    /*
+        Resposta esperada (29.0), já que no comando *p2 = 29.0 o valor da variavel temp
+    recebeu o numero 29.0.
+    */
+ 
+    /* (c) */
+    p3 = &nome[0]; // o ponteiro p3 armazena o endereço da primeira posição do vetor nome
+    aux = *p3; // a variável aux assume o valor contido no endereço que p3 aponta
+    printf("%c \n", aux); // imprime a informação guardada na variável aux: a letra P
+
+    /* (d) */
+    p3 = &nome[4];
+    aux = *p3;
+    printf("%c \n", aux);
+    /*
+        Resposta esperada (e), já que aux = *p3 faz com que a variavel aux receba
+    o valor do quinto indice do array "Ponteiro", ou seja, e.
+    */
+
+    /* (e) */
+    p3 = nome; // o ponteiro p3 que armazena o endereço da primeira posição do vetor nome
+    printf("%c \n", *p3); // impreme a informação guardada no endereço de p3: a letra P
+    
+    /* (f) */
+    p3 = p3 + 4;
+    printf("%c \n", *p3);
+    /*
+        Resposta esperada (e), já que p3 = p3 + 4 indica que o endereço que p3 guarda
+    deve ser somado mais 4, nesse caso o ponteiro dará 4 saltos do tamanho de um char,
+    logo, irá recber o endereço do quinto indece do array "Ponteiro", ao executar o
+    comando *p3 será exibido o valor do indice que p3 guarda o endereço, ou seja, e.
+    */
+
+    /* (g) */
+    p3--; // é decrescido 1 bytes ao endereço de p3
+    printf("%c \n", *p3); // é impresso o conteúdo de endereço que o ponteiro p3 depois do decréscimo: a letra t
+
+    /* (h) */
+    vetor[0] = 31;
+    vetor[1] = 45;
+    vetor[2] = 27;
+    p4 = vetor;
+    idade = *p4;
+    printf("%d \n", idade);
+    /*
+        Resposta esperada (31), analisando o código, conclui-se que p4 possui o endereço do primeiro indice do Vetor vetor,
+    ao determinar idade = *p4, a variavel idade receberá o valor do primeiro
+    indice do vetor, ou seja, 31.
+    */
+
+     /* (i) */
+    p5 = p4 + 1;
+    idade = *p5;
+    printf("%d \n", idade);
+    /*
+        Resposta esperada (45), pois p4 + 1 representa que p5 receberá o
+    endereço de p4 somado ao tamanho de memoria reservado para um inteiro,
+    logo, p5 guarda o endereço do segundo indice do vetor. Como idade = *p5,
+    então idade terá o mesmo valor que o segundo indice do vetor, ou seja, 45.
+    */
+
+    /* (j) */
+    p4 = p5 + 1; // p4 aponta para o endereço de p5 acrescido em 1: vetor[2]
+    idade = *p4; // a variável idade assume o valor contido no endereço que p4 aponta: o inteiro 27
+    printf("%d \n", idade); // imprime o valor da variável idade
+
+    /* (l) */
+    p4 = p4 - 2;
+    idade = *p4;
+    printf("%d \n", idade);
+    /*
+        Resposta esperada (31), poisp4 aponta para o endereço de p4 inicial decrescido em 2: vetor[0], 
+    a variável idade assume o valor contido no endereço que p4 aponta: o inteiro 31
+    */
+
+    /* (m) */
+    p5 = &vetor[2] - 1;
+    printf("%d \n", *p5);
+    /*
+        Resposta esperada (45), pois p5 passou a guardar o endereço do
+    segundo indice do vetor, então *p5 terá o mesmo valor do segundo indice,
+    ou seja, 45.
+    */
+
+    /* (n) */
+    p5++; // o endereço de p5 é acrescido de 1 unidade: volta a apontar para vetor[2]
+    printf("%d \n", *p5);  // imprime o valor contido no endereço que p5 aponta: o inteiro 27
+
+    return 0;
+}
