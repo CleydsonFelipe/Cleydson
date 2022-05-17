@@ -1,0 +1,62 @@
+# include  < stdio.h >
+# include  < stdlib.h > 
+
+
+// função de comparação
+int  comparar ( const  void * a, const  void * b){
+    
+    if (*( float *)a == *( float *)b){
+        retorna  0 ; // igual
+    
+    } else {
+        if (*( float *)a < *( float *)b){
+        
+        retorno - 1 ; // vem antes
+    
+        } else {
+            
+            return  1 ; // vem depois
+        }
+    }
+}
+
+int  main (){
+    
+    float *x; // criação vetor tipo float
+    int n; // criação valor n do vetor
+    
+    scanf ( " %d " ,&n); // atribuindo um valor inteiro
+    
+
+    x = malloc (n* sizeof ( float )); // malloc para alocação dinâmica
+    
+    // para digitar os valores armazenados no vetor x
+    for ( int i= 0 ;i<n;i++){
+        scanf ( " %f " ,&x[i]);
+    }
+    
+    
+    // a função qsorte para fazerordenação do vetor
+    qsort (x,n, sizeof ( float ),comparar);
+    
+    /* A função qsort vai possuir 4 argumentos sem momentos de chamada:
+    - base: x endereço do vetor a ser ordenado
+    - n: tamanho do vetor
+    - sizeof(float): tamanho de cada elemento
+    - comparação: ponteiro para função de comparação não fará comparação repetidas para ordem crescente.    
+    
+    */
+    
+    
+   // para imprimir o novo vetor ordenado
+    for ( int i= 0 ;i<n;i++){
+        printf ( " %.f  " , x[i]);
+
+    }
+
+    // liberando a memoria do vetor
+    free (x);
+
+    return  0 ;
+
+}
