@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void){
+float vet[5] = {1.1,2.2,3.3,4.4,5.5};
+float *f;
+int i;
+f = vet;
+printf("contador/valor/valor/endereco/endereco"); // imprime o texto entre aspas
+for(i = 0 ; i <= 4 ; i++){
+printf("\ni = %d",i); // imprime o texto "i =" e depois o atual valor da variável i (irá de 0 até 4), conforme a interação do for
+printf("vet[%d] = %.1f",i, vet[i]); // imprime o texto "vet[i] =", conforme o valor assumido pela variável i, e depois o valor armazenado na posição i do vetor
+printf("*(f + %d) = %.1f",i, *(f+i)); // imprime o texto "*(f+i) =", conforme o valor assumido pela variável i, e depois a informação presente no endereço de memória que tem 4 bytes a mais (variável float) com relação ao endereço de f
+printf("&vet[%d] = %X",i, &vet[i]); // imprime o texto "vet[i] =" e depois o endereço de memória em hexadecimal da iésima - 1 posição do vetor
+printf("(f + %d) = %X",i, f+i); // imprime o texto "(f+i)=" e depois o endereço de memória em hexadecimal que o ponteiro f aponta acrescido em 4i bytes
+}
+
+/* 
+Espera-se que seja impresso:
+"contador/valor/valor/endereco/endereco"
+E, depois, pule-se uma linha e mostre, nas 5 respectivas interações de i:
+i = 0vet[0] = 1.1*(f + 0) = 1.1&vet[0] = D7EC9590(f + 0) = D7EC9590
+i = 1vet[1] = 2.2*(f + 1) = 2.2&vet[1] = D7EC9594(f + 1) = D7EC9594
+i = 2vet[2] = 3.3*(f + 2) = 3.3&vet[2] = D7EC9598(f + 2) = D7EC9598
+i = 3vet[3] = 4.4*(f + 3) = 4.4&vet[3] = D7EC959C(f + 3) = D7EC959C
+i = 4vet[4] = 5.5*(f + 4) = 5.5&vet[4] = D7EC95A0(f + 4) = D7EC95A0
+
+        O valores corresponderam ao esperado, pois vet[i] representa o valor de vet no
+    indice i e de mesmo modo *(f+i) também representa o valor de vet no indice i, logo,
+    ambos valores são iguais. &vet[i] representa o endereço de vet no indice i e de
+    mesmo modo f + 1 também representa o endereço de vet no indice i, logo, ambos os
+    endereços são iguais.
+*/
+
+    return 0;
+}
