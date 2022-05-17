@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+char v1[4] = {'a', 'b', 'c', 'd'};
+int v2[4] = {1, 2, 3, 4};
+float v3[4] = {1.1, 2.2, 3.3, 4.4};
+double v4[4] = {5, 6, 7, 8};
+
+  for(int i = 0; i < 4; i++){
+   printf("%x %x %x %x \n", (v1 + i),(v2 + i),(v3 + i),(v4 + i));
+
+   }
+
+return 0;
+}
+
+/*
+Conforme descrito no enunciado, teríamos os seguintes endereços de memória para cada representação do vetor:
+CHAR:
+x + 1 // 4093
+x + 2 // 4094
+x + 3 // 4095
+INT:
+x + 1 // 4094
+x + 2 // 4096
+x + 3 // 4098
+FLOAT:
+x + 1 // 4096
+x + 2 // 4100
+x + 3 // 4104
+DOUBLE:
+x + 1 // 4100
+x + 2 // 4108
+x + 3 // 4112
+*/
