@@ -1,0 +1,5 @@
+A primeira, a segunda e a quarta expressões são possíveis.
+p = mat + 1; // É possivel, pois mat é um endereço e mat + 1 representa que o p receberá o valor
+de mat mais um salto de 4 bytes;
+p = mat++; // É possível, pois mat é um endereço e p é um ponteiro;
+x = (*mat)++; // É possível, pois x receberá o valor da primeira posição de mat;
