@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int comparar(float a, float b) {
+    if (a == b) {
+        return 0;
+    } else if (a < b) {
+        return -1;
+    } else {
+        return 1;
+    }
+}
+
+void ordenar(float *vet, int tamanho, int (*fun) (float, float)) {
+    float aux = 0;
+    for (int y = 0; y < tamanho; y++) {
+        for (int x = 0; x < tamanho; x++) {
+            if (fun(vet[y], vet[x]) == -1) {
+                aux = vet[x];
+                vet[x] = vet[y];
+                vet[y] = aux;
+            }
+        }
+    }
+}
+
+int main() {
+    float *valores;
+    int quantidade;
+
+    printf("Quantos valores serão ordenados? ");
+    scanf("%d", &quantidade);
+    valores = malloc(quantidade * sizeof(float));
+    for (int t = 0; t < quantidade; t++) {
+        printf("Valor (%d): ", t);
+        scanf("%f", &valores[t]);
+    }
+    printf("Ordenação: ");
+    ordenar(valores, quantidade, comparar);
+    for (int t = 0; t < quantidade; t++) {
+        printf("%.1f ", valores[t]);
+    }
+    free(valores);
+    return 0;
+}
