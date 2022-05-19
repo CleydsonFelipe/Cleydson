@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void soma(int tamanho, int *x, int *y, int *z){ 
+  
+   for(int i = 0; i < tamanho; i++){
+    z[i] = x[i] + y[i];
+   }
+}
+
+int main(){
+int tamanho;
+  
+  printf("Qual será o tamanho dos vetores?\n"); 
+  
+  scanf("%d", &tamanho);
+int x[tamanho], y[tamanho], z[tamanho];
+	
+  x[tamanho] = (int *) malloc(tamanho*sizeof(int));
+  y[tamanho] = (int *) malloc(tamanho*sizeof(int));
+  z[tamanho] = (int *) malloc(tamanho*sizeof(int));
+
+  printf("Quais serão os valores do primeiro vetor?\n");
+   for(int i = 0; i < tamanho; i++){
+    scanf("%d", &x[i]);
+   }
+  printf("Quais serão os valores do segundo vetor?\n");
+   for(int i = 0; i < tamanho; i++){
+    scanf("%d", &y[i]);
+   }
+	
+  soma(tamanho, x, y, z); 
+  
+  printf("\nA soma dos elementos correspondentes dos vetores digitados é:\n");
+
+  for(int i = 0; i < tamanho; i++){
+    printf("%d ", z[i]);
+	printf("\n");
+}
+
+free(x);
+free(y);
+free(z);
+
+    return 0;
+}
