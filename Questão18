@@ -1,0 +1,114 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+  int **alocar_matriz (int **x,int nlx, int ncx){
+
+  x = malloc(nlx * sizeof(int *));
+
+    for (int i = 0; i < nlx; i++) {
+        x[i] = malloc(ncx * sizeof(int));
+}
+    return x;
+}
+
+void liberar_matriz(int **x, int nlx) {
+
+    for (int i = 0; i < nlx; i++) {
+      free(x[i]);
+}
+    free(x);
+}
+
+void produto_matriz(int **c, int **a, int **b, int colunasA, int linhasA, int colunasB, int linhasB){
+
+  int o = 0;
+    for(int i = 0; i < linhasA; i++) {
+		  for(int j = 0; j < colunasB; j++) {
+		    o = 0;
+            for(int k = 0; k < colunasA; k++){
+            o = o + *(*(a+i)+k) * (*(*(b+k)+j));
+  }
+		*(*(c+i)+j) = o;
+		}
+	}
+}
+
+  int main() {
+	
+  int **a, linhasA, colunasA, **b, linhasB, colunasB, **c;
+
+printf("O usuário deve fornecer os tamanhos dos vetores, sendo assim:\n");
+printf("\n");
+printf("Qual será o número de linhas de A?\n");
+scanf("%d", &linhasA);
+printf("Qual será o número de colunas de A?\n");
+scanf("%d", &colunasA);
+printf("\n");
+	
+a = alocar_matriz(a, linhasA, colunasA);
+
+  for(int i = 0; i < linhasA; i++){
+    for(int j = 0; j < colunasA; j++){
+        printf("Qual será o valor alocado na linha %d e a coluna %d da matriz A? ", i+1, j+1);
+        scanf("%d", &a[i][j]);
+    }
+}
+
+printf("\n");
+printf("Qual será o número de linhas de B?\n");
+scanf("%d", &linhasB);
+printf("Qual será o número de colunas de B?\n");
+scanf("%d", &colunasB);
+printf("\n");
+
+  if(colunasA != linhasB){
+    printf("Número de colunas de A diferente do número de linhas de B!!!\n");
+}
+  else{
+	
+b = alocar_matriz(b, linhasB, colunasB);
+	
+  for(int i = 0; i < linhasB; i++){
+    for(int j = 0; j < colunasB; j++){
+        printf("Qual será o valor alocado na linha %d e a coluna %d da matriz B?", i+1, j+1);
+        scanf("%d", &b[i][j]);
+  }
+}
+
+c = alocar_matriz(c, linhasA, colunasB);
+produto_matriz(c, a, b, linhasA, colunasA, linhasB, colunasB);
+
+  printf("\n");
+  printf("Matriz A:\n");
+    for(int i = 0; i < linhasA; i++){
+      for(int j = 0; j < colunasA; j++){
+          printf("%d ", a[i][j]);
+  }
+    printf("\n");
+}
+	
+  printf("\n");
+  printf("Matriz B:\n");
+  for(int i = 0; i < linhasB; i++){
+      for(int j = 0; j < colunasB; j++){
+              printf("%d ", b[i][j]);
+  }
+    printf("\n");
+}
+
+  printf("\n");
+  printf("Matriz C que representa o produto matricial AB:\n");
+      for(int i = 0; i < linhasA; i++) {
+  		for(int j = 0; j < colunasB; j++) {
+  			printf("%d ", *(*(c+i)+j));
+	}
+		printf("\n");
+}
+
+  liberar_matriz(a, linhasA);
+  liberar_matriz(b, linhasB);
+  liberar_matriz(c, colunasA);
+
+    return 0;
+}
+}
